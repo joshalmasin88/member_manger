@@ -22,36 +22,68 @@
 			<div class="mb-4">
 				<button data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-dark">Add New Member</button>
 			</div>
-			<table id="table_id" class="table table-hover">
-				<thead class="thead-dark">
-				<tr>
-					<th>Member ID</th>
-					<th>Full Name</th>
-					<th>Payment Date</th>
-					<th>Plan</th>
-					<th>Status</th>
-					<th>Actions</th>
-				</tr>
-				</thead>
-				<tbody>
-				<?php if($users) : ?>
-					<?php foreach ($users as $i) : ?>
-				<tr>
-					<input type="hidden" value="<?= $i->member_id; ?>" id="mem">
-					<td><?= $i->member_id; ?></td>
-					<td><?= $i->fname; ?></td>
-					<td><?= date('m/d/y', strtotime($i->paydue)); ?></td>
-					<td><?= $i->plan; ?></td>
-					<td><?= $i->status; ?></td>
-					<td>
-						<a href="updatemem/<?= $i->member_id ?>" class="userid btn btn-primary" data-target="#updateModal" class="btn btn-primary">Update Member</a>
-						<a href="deletemember/<?= $i->member_id; ?>" class="btn btn-danger">Delete</a>
-					</td>
-				</tr>
-				<?php endforeach; ?>
-				<?php endif; ?>
-				</tbody>
-			</table>
+
+			<div class="table-responsive d-lg-none">
+				<table id="table_id" class="table table-hover">
+					<thead class="thead-dark">
+					<tr>
+						<th>Member ID</th>
+						<th>Full Name</th>
+						<th>Status</th>
+						<th>Actions</th>
+					</tr>
+					</thead>
+					<tbody>
+					<?php if($users) : ?>
+						<?php foreach ($users as $i) : ?>
+							<tr>
+								<input type="hidden" value="<?= $i->member_id; ?>" id="mem">
+								<td><?= $i->member_id; ?></td>
+								<td><?= $i->fname; ?></td>
+								<td><?= $i->status; ?></td>
+								<td>
+									<a href="updatemem/<?= $i->member_id ?>" class="userid" data-target="#updateModal" class="btn btn-primary">Update</a>
+									<a href="deletemember/<?= $i->member_id; ?>" >Delete</a>
+								</td>
+							</tr>
+						<?php endforeach; ?>
+					<?php endif; ?>
+					</tbody>
+				</table>
+			</div>
+			<div class="table-responsive d-none d-lg-block">
+				<table id="table_id" class="table table-hover">
+					<thead class="thead-dark">
+					<tr>
+						<th>Member ID</th>
+						<th>Full Name</th>
+						<th>Payment Date</th>
+						<th>Plan</th>
+						<th>Status</th>
+						<th>Actions</th>
+					</tr>
+					</thead>
+					<tbody>
+					<?php if($users) : ?>
+						<?php foreach ($users as $i) : ?>
+							<tr>
+								<input type="hidden" value="<?= $i->member_id; ?>" id="mem">
+								<td><?= $i->member_id; ?></td>
+								<td><?= $i->fname; ?></td>
+								<td><?= date('m/d/y', strtotime($i->paydue)); ?></td>
+								<td><?= $i->plan; ?></td>
+								<td><?= $i->status; ?></td>
+								<td>
+									<a href="updatemem/<?= $i->member_id ?>" class="userid" data-target="#updateModal" class="btn btn-primary">Update</a>
+									<a href="deletemember/<?= $i->member_id; ?>" >Delete</a>
+								</td>
+							</tr>
+						<?php endforeach; ?>
+					<?php endif; ?>
+					</tbody>
+				</table>
+			</div>
+
 		</div>
 	</div>
 </div>

@@ -10,6 +10,15 @@ class Accounts extends CI_Controller
 		$this->load->model('AccountModel');
 	}
 
+	public function index()
+	{
+		$data['users'] = $this->AccountModel->displayAll();
+		$this->load->view('templates/header');
+		$this->load->view('admin/manage', $data);
+		$this->load->view('templates/footer');
+
+	}
+
 	public function Manage()
 	{
 		$data['users'] = $this->AccountModel->displayAll();
